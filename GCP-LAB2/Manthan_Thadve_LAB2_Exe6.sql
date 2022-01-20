@@ -10,8 +10,8 @@ WHERE
 stack_posts.accepted_answer_id IS NOT NULL
 AND stack_posts.creation_date BETWEEN '2010-01-01 17:30:00' AND '2010-12-31 17:30:00'
 )
-SELECT u.id AS User_ID ,COUNT(*) AS count FROM StackAnsweredPosts SAP
-JOIN `bigquery-public-data.stackoverflow.users` user
+SELECT user.id AS User_ID ,COUNT(*) AS count FROM StackAnsweredPosts AS SAP
+JOIN `bigquery-public-data.stackoverflow.users` AS user
 ON user.id= SAP.id_user
 GROUP BY user.id
 ORDER BY count DESC
